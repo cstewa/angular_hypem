@@ -1,28 +1,16 @@
 angular.module('finalProj')
 
 .factory('Signup', function($resource) {
-  return $resource('http://localhost:8080/api/signup')
-})
-
-.controller('SignupCtrl', function($state, $urlRouter, $modal) {
-  var modalPromise = $modal.open({
-    templateUrl: 'app/auth/signupModal.html',
-    controller: 'SignupModalCtrl as ctrl',
-    backdrop: 'static'
-  })
-  modalPromise.result.then(function onSuccess(result) {
-    $state.go('home')
-    console.log(result.hypem)
-  }, function onError(error) {
-    console.log(error)
-  })
+  return $resource('http://localhost:8080/api/signup', {},
+    { makePost: { method: 'POST', isArray: false }}
+  )
 })
 
 .controller('SignupModalCtrl', function(Signup, $modalInstance) {
   var self = this;
 
   self.submit = function() {
-    Signup.save({}, {user: self.user})
+    Signup.makePost({}, {user: "testing"})
     .$promise
     .then(function onSuccess(response) {
       $modalInstance.close(self.user)

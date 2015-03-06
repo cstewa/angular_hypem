@@ -21,10 +21,17 @@ angular.module('finalProj')
   .controller('MainCtrl', function ($sce, PopularPlaylist) {
     var self = this;
 
-    PopularPlaylist.query(undefined, function(response) {
-      for (var i = response.length - 1; i >= 0; i--) {
-        response[i].post_url = $sce.trustAsResourceUrl(response[i].post_url)
-      };
-      self.popular = response;
-    })
+    // PopularPlaylist.query(undefined, function(response) {
+    //   for (var i = response.length - 1; i >= 0; i--) {
+    //     response[i].post_url = $sce.trustAsResourceUrl(response[i].post_url)
+    //   };
+    //   self.popular = response;
+    // })
+
+    self.popular = [{
+      title: "c",
+      blog: "h",
+      post_url: "r",
+      artist: "i"
+    }]
   });

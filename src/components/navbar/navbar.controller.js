@@ -9,9 +9,8 @@ angular.module('finalProj')
         backdrop: 'static'
       })
       modalPromise.result.then(function onSuccess(result) {
-        //here is where you make the request to see if they're logged in
         $state.go('home')
-        console.log(result.hypem)
+        console.log(result)
       }, function onError(error) {
         console.log(error)
       })
@@ -24,7 +23,6 @@ angular.module('finalProj')
         backdrop: 'static'
       })
       modalPromise.result.then(function onSuccess(result) {
-        //here is where you make the request to see if they're logged in
         $state.go('home')
         console.log(result.hypem)
       }, function onError(error) {

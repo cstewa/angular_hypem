@@ -6,6 +6,4 @@ angular.module('finalProj')
   self.submit = function() {
     $modalInstance.close(self.user)
   };
-
-
 })
