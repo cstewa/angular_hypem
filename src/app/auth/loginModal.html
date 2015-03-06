@@ -1,0 +1,7 @@
+<div style="height: 400px">
+  <form name="ctrl.form" novalidate ng-submit="ctrl.submit()">
+    <input placeholder="Hypem Username" type="hypem" ng-model="ctrl.user.hypem" required>
+    <input placeholder="Password" type="hypem" ng-model="ctrl.user.password" required>
+    <input type="submit" class="btn btn-primary" value="Submit" ng-disabled="ctrl.form.$invalid">
+  </form>
+</div>
