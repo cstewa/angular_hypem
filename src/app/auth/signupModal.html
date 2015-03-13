@@ -1,10 +1,11 @@
 <div style="height: 400px">
+  <p> {{ctrl.error}} </p>
   <form name="ctrl.form" novalidate ng-submit="ctrl.submit()">
-    <input placeholder="First Name" type="first" ng-model="ctrl.user.first" required>
-    <input placeholder="Last Name" type="ctrl.user.last" ng-model="ctrl.last" required>
-    <input placeholder="Hypem Username" type="hypem" ng-model="ctrl.user.hypem" required>
-    <input placeholder="Password" type="hypem" ng-model="ctrl.user.password" required>
-    <input placeholder="Password Confirmation" type="hypem" ng-model="ctrl.user.confirmation" required>
+    <input placeholder="First Name" type="text" ng-model="ctrl.user.first" required>
+    <input placeholder="Last Name" type="text" ng-model="ctrl.user.last" required>
+    <input placeholder="Hypem Username" type="text" ng-model="ctrl.user.hypem" required>
+    <input placeholder="Password" type="text" ng-model="ctrl.user.password" required>
+    <input placeholder="Password Confirmation" type="text" ng-model="ctrl.user.confirmation" required>
     <input type="submit" class="btn btn-primary" value="Submit" ng-disabled="ctrl.form.$invalid">
   </form>
 </div>

@@ -1,17 +1,33 @@
 'use strict';
 
 angular.module('finalProj')
-  .controller('NavbarCtrl', function ($scope, $modal, $state) {
+  .service('CurrentUser', function() {
+    this.hypem = null;
+  })
+
+  .factory('Logout', function($resource) {
+    return $resource('/api/logout.json', {},
+      { logout: { method: 'DELETE', isArray: false }}
+    )
+  })
+
+  .factory('CurrentUserResource', function($resource) {
+    return $resource('/api/sessions/show', {},
+      { get: { method: 'GET', isArray: false }}
+    )
+  })
+
+  .controller('NavbarCtrl', function (CurrentUser, CurrentUserResource, $scope, $modal, $state, Logout) {
     $scope.login = function() {
       var modalPromise = $modal.open({
         templateUrl: 'app/auth/loginModal.html',
-        controller: 'LoginModalCtrl as ctrl',
-        backdrop: 'static'
+        controller: 'LoginModalCtrl as ctrl'
       })
       modalPromise.result.then(function onSuccess(result) {
-        $state.go('home')
-        console.log(result)
+        CurrentUser.hypem = result.hypem
+        $scope.currentUserHypem = CurrentUser.hypem
       }, function onError(error) {
+        console.log("error:")
         console.log(error)
       })
     }
@@ -19,14 +35,26 @@ angular.module('finalProj')
     $scope.signup = function() {
       var modalPromise = $modal.open({
         templateUrl: 'app/auth/signupModal.html',
-        controller: 'SignupModalCtrl as ctrl',
-        backdrop: 'static'
+        controller: 'SignupModalCtrl as ctrl'
       })
       modalPromise.result.then(function onSuccess(result) {
-        $state.go('home')
-        console.log(result.hypem)
+        CurrentUser.hypem = result.hypem
+        $scope.currentUserHypem = CurrentUser.hypem
       }, function onError(error) {
         console.log(error)
+      })
+    }
+
+    $scope.logout = function() {
+      Logout.logout({}, {}, function(result) {
+        CurrentUser.hypem = null
+        $scope.currentUserHypem = CurrentUser.hypem
+      })
+    }
+
+    $scope.getCurrentUser = function() {
+      CurrentUserResource.get({}, {}, function(result) {
+        console.log(result)
       })
     }
   });

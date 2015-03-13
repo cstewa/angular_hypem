@@ -21,7 +21,7 @@ var chalk = require('chalk');
 /*
  * Location of your backend server
  */
-var proxyTarget = 'http://localhost:8080/api';
+var proxyTarget = 'http://localhost:8080/';
 
 var proxy = httpProxy.createProxyServer({
   target: proxyTarget
@@ -48,7 +48,7 @@ function proxyMiddleware(req, res, next) {
    * for your needs. If you can, you could also check on a context in the url which
    * may be more reliable but can't be generic.
    */
-  if (/www|api/.test(req.url)) {
+  if (/api/.test(req.url)) {
     proxy.web(req, res);
   } else {
     next();

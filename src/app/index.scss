@@ -21,3 +21,19 @@
   z-index: 1;
   opacity: 0.5;
 }
+
+#hypem-playlist-container {
+  float: left;
+  width: 45%;
+  margin-left: 3%;
+}
+
+#user-playlist-container {
+  float: right;
+  width: 45%;
+  margin-right: 3%;
+}
+
+.playlist-name {
+  background-color: black;
+}

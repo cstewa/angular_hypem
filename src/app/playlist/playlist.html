@@ -1,0 +1,10 @@
+<button ng-click="playlistCtrl.getPlaylists()"> Get playlists </button>
+
+<div id="user-playlist-container">
+  <input ng-keypress="playlistCtrl.add($event)" placeholder="Add Playlist" type="text" ng-model="playlistCtrl.playlist.name">
+
+  <div ng-repeat="(name, tracks) in playlistCtrl.playlists">
+  <span style="color:white" class="playlist-name">{{name}}</span>
+  <div user-track-directive tracks="tracks"> </div>
+  </div>
+</div>

@@ -18,9 +18,10 @@ angular.module('finalProj')
     return $resource('http://localhost:8080/api/popular')
   })
 
-  .controller('MainCtrl', function ($sce, PopularPlaylist) {
+  .controller('MainCtrl', function ($state, $sce, PopularPlaylist, PlaylistResource) {
     var self = this;
 
+    //move this out your controller and put it in a factory i think!
     // PopularPlaylist.query(undefined, function(response) {
     //   for (var i = response.length - 1; i >= 0; i--) {
     //     response[i].post_url = $sce.trustAsResourceUrl(response[i].post_url)
@@ -34,4 +35,6 @@ angular.module('finalProj')
       post_url: "r",
       artist: "i"
     }]
+
+    $state.go('home.playlists')
   });

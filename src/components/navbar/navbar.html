@@ -8,8 +8,10 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li><a ng-click="login()">Log In</a></li>
-        <li><a ng-click="signup()">Sign Up</a></li>
+        <li><a ng-show="currentUserHypem == null" ng-click="login()">Log In</a></li>
+        <li><a ng-show="currentUserHypem == null" ng-click="signup()">Sign Up</a></li>
+        <li><a ng-show="currentUserHypem != null" ng-click="logout()">Log Out</a></li>
+        <li ng-show="currentUserHypem != null"><a>Logged in as {{currentUserHypem}}</a></li>
       </ul>
     </div>
   </div>

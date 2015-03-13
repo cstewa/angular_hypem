@@ -1,5 +1,7 @@
-<div class="container">
+<div id="hypem-playlist-container">
   <div ng-repeat="track in mainCtrl.popular">
     <div hypem-playlist-directive title="track.title" artist="track.artist" blog="track.blog" posturl="track.post_url"></div>
   </div>
 </div>
+
+<div ui-view></div>
