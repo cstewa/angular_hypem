@@ -6,7 +6,7 @@ angular.module('finalProj')
   )
 })
 
-.controller('LoginModalCtrl', function(Login, $modalInstance) {
+.controller('LoginModalCtrl', function(Login, $rootScope, $scope, $modalInstance) {
   var self = this;
 
   self.submit = function() {
@@ -18,6 +18,7 @@ angular.module('finalProj')
     })
     .$promise
     .then(function onSuccess(response) {
+      $rootScope.$broadcast('logged-in')
       $modalInstance.close(self.user)
     }, function onError(response) {
       self.error = response.data.errors
