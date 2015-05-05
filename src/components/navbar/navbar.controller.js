@@ -5,6 +5,23 @@ angular.module('finalProj')
     this.hypem = null;
   })
 
+  .value('AuthToken', '')
+
+  .factory("AuthInterceptor", function($q, $injector) {
+    return {
+      request: function(config) {
+        var token = $injector.get("AuthToken");
+        console.log(token)
+        config.headers = config.headers || {};
+        if (token) {
+          config.headers.Authorization = "Bearer" + token
+          console.log(config.headers)
+        }
+        return config || $q.when(config);
+      }
+    }
+  })
+
   .factory('Logout', function($resource) {
     return $resource('/api/logout.json', {},
       { logout: { method: 'DELETE', isArray: false }}

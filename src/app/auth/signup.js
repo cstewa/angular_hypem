@@ -6,7 +6,7 @@ angular.module('finalProj')
   )
 })
 
-.controller('SignupModalCtrl', function(Signup, $modalInstance) {
+.controller('SignupModalCtrl', function(Signup, AuthToken, $modalInstance) {
   var self = this;
 
   self.submit = function() {
@@ -21,10 +21,8 @@ angular.module('finalProj')
     })
     .$promise
     .then(function onSuccess(response) {
-      console.log("hypem reponse: ")
-      console.log(response)
+      AuthToken = response.auth_token
       $modalInstance.close(self.user)
-      //display that user is signed in
     }, function onError(response) {
       self.error = response.data.errors
     });
