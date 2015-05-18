@@ -22,6 +22,8 @@ angular.module('finalProj')
     .$promise
     .then(function onSuccess(response) {
       AuthToken = response.auth_token
+      console.log('****setting auth token')
+      console.log(AuthToken)
       $modalInstance.close(self.user)
     }, function onError(response) {
       self.error = response.data.errors

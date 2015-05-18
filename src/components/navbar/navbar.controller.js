@@ -5,16 +5,19 @@ angular.module('finalProj')
     this.hypem = null;
   })
 
-  .value('AuthToken', '')
+  .value('AuthToken', 'youstink')
 
-  .factory("AuthInterceptor", function($q, $injector) {
+  .factory("AuthInterceptor", function($q, $injector, AuthToken) {
     return {
       request: function(config) {
+        //test that its youstink
         var token = $injector.get("AuthToken");
-        console.log(token)
         config.headers = config.headers || {};
+        console.log('********sending token')
+        console.log(token)
         if (token) {
           config.headers.Authorization = "Bearer" + token
+          console.log('*****headers')
           console.log(config.headers)
         }
         return config || $q.when(config);
