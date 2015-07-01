@@ -11,12 +11,12 @@ angular.module('finalProj')
     return {
       request: function(config) {
         //test that its youstink
-        var token = $injector.get("AuthToken");
+        var token = AuthToken;
         config.headers = config.headers || {};
         console.log('********sending token')
         console.log(token)
         if (token) {
-          config.headers.Authorization = "Bearer" + token
+          config.headers.Authorization = "Bearer" + AuthToken
           console.log('*****headers')
           console.log(config.headers)
         }

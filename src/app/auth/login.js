@@ -6,7 +6,7 @@ angular.module('finalProj')
   )
 })
 
-.controller('LoginModalCtrl', function(Login, $rootScope, $scope, $modalInstance, AuthToken,$injector) {
+.controller('LoginModalCtrl', function(Login, $rootScope, $scope, $modalInstance, AuthToken, $injector) {
   var self = this;
 
   self.submit = function() {
@@ -18,8 +18,10 @@ angular.module('finalProj')
     })
     .$promise
     .then(function onSuccess(response) {
+      debugger
       AuthToken = response.auth_token
-      console.log($injector.get('AuthToken'))
+      console.log('******setting auth token****')
+      console.log(AuthToken)
       $rootScope.$broadcast('logged-in')
       $modalInstance.close(self.user)
     }, function onError(response) {
